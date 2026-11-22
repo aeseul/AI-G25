@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand-green: #319447;
+    --brand-green-dark: #257336;
+    --brand-orange: #f49a24;
+    --brand-yellow: #ffd65a;
+    --bg-cream: #fff9ef;
+    --text-main: #252525;
+  }
+
+  html {
+    font-family: "Plus Jakarta Sans", "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #fff9ef;
+    color: #252525;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: #fff9ef;
+    color: #252525;
+    overflow-x: clip;
+    max-width: 100%;
+  }
+}
+
+.font-num {
+  font-family: "Plus Jakarta Sans", "JetBrains Mono", "Noto Sans KR", monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Subtle receipt zigzag edge */
+.receipt-edge {
+  background-image: linear-gradient(135deg, #fff9ef 50%, transparent 50%),
+    linear-gradient(225deg, #fff9ef 50%, transparent 50%);
+  background-position: bottom left;
+  background-size: 12px 12px;
+  background-repeat: repeat-x;
+}
+
+@keyframes worldFadeZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gentleBob {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.world-enter-anim {
+  animation: worldFadeZoomIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.character-bob {
+  animation: gentleBob 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .world-enter-anim,
+  .character-bob {
+    animation: none !important;
+  }
+  .motion-safe-transition {
+    transition: none !important;
+  }
+}
+
